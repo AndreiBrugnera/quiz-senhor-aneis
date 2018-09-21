@@ -58,7 +58,7 @@ function ChamaPergunta() {
     } else if (FilaPerguntas.size() === 0) {
         var btnStart = document.getElementById('inicio');
         btnStart.innerHTML = 'Recomeçar';
-        btnStart.setAttribute("onClick", "javascript: SortearResultado();");
+        btnStart.setAttribute("onClick", "javascript: Reload()");
 
         var ContentResult = document.getElementById('perguntas');
         ContentResult.innerHTML = SortearResultado();
@@ -109,9 +109,12 @@ function SortearResultado() {
     if (TRing >= 6) {
         string = '<h2>Você recebeu a honra de participar da festa dos Hobbits no Condado.</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/uacUXA57VYE?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     } else if (TRing <= 5) {
-        string = '<h2></h2><img src="'+Eye+'" alt="" />';
+        string = '<h2>A jornada não acaba aqui. A morte é apenas um outro caminho... que todos temos que tomar.</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/R83vTGt0vg8?start=73&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     }
 
-    console.log(string);
     return string;
+}
+
+function Reload(){
+    location.reload();
 }
