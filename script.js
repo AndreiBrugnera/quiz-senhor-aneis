@@ -1,9 +1,9 @@
+var Pilha = new Stack();
 //CHECA PRA MUDAR FRASE DO BOTÃO
 if (FilaPerguntas.size() === 10) {
     var btnStart = document.getElementById('inicio');
     btnStart.innerHTML = "Iniciar Quizz";
 }
-
 /* VARIAVEIS */
 var questao = document.getElementById('questao');
 var alternativa1 = document.getElementById('alternativa1');
@@ -11,6 +11,12 @@ var alternativa2 = document.getElementById('alternativa2');
 var alternativa3 = document.getElementById('alternativa3');
 var alternativa4 = document.getElementById('alternativa4');
 var alternativa5 = document.getElementById('alternativa5');
+
+var aux = 10;
+var Ring = "https://vignette.wikia.nocookie.net/terramedia/images/0/00/Ring_02.png/revision/latest?cb=20141212214327";
+var Eye = "https://media.forgecdn.net/avatars/78/278/636175057431321068.png";
+var TRing = 0;
+var TEye = 0;
 
 //ABRE O PAINEL DE INSTRUÇ~EOS
 function Instrucoes() {
@@ -47,10 +53,21 @@ function ChamaPergunta() {
     } else if (FilaPerguntas.size() === 0) {
         var btnStart = document.getElementById('inicio');
         btnStart.innerHTML = 'Ver resultado';
-    } else {
-        alert("vazio");
-    }
+        btnStart.setAttribute("onClick", "javascript: SortearResultado();");
 
+        var ContentResult = document.getElementById('perguntas');
+        ContentResult.innerHTML = SortearResultado();
+        
+        var resultado = document.createElement('div');
+                resultado.innerHTML = SortearResultado();
+
+        btnStart.innerHTML = 'Recomeçar';
+//        btnStart.setAttribute("onClick", "javascript: ChamaPergunta();");
+
+
+    } else {
+        alert("Você descobriu um bug no sistema. Favor comunique os alunos Andrei e Matheus e conte o que você fez!");
+    }
 
 }
 
@@ -59,34 +76,42 @@ function CheckResposta() {
     var CheckedRadio = document.querySelector('input[type=radio]:checked');
     var Selecionada = CheckedRadio.value;
 
-
-    console.log(Selecionada);
-    console.log(FilaPerguntas.front().respostaCerta);
-
-
     if (Selecionada == FilaPerguntas.front().respostaCerta) {
-        var auxiliar;
-        var Premio = document.getElementById('p' + auxiliar--);
-        Premio.setAttribute('style', galeao);
-        pilha.push(galeao);
-
-
-        alert("certa resposta");
-
-
+        Premio = document.getElementById('premio' + aux--);
+        Premio.setAttribute('src', Ring);
+        Pilha.push(Ring);
     } else {
-        alert("random");
-
-
+        Premio = document.getElementById('premio' + aux--);
+        Premio.setAttribute('src', Eye);
+        Pilha.push(Eye);
     }
 
     setTimeout(function () {
         FilaPerguntas.dequeue();
         ChamaPergunta();
-    }, 500);
+    }, 400);
+}
 
-//    console.log(FilaPerguntas.size());
+function SortearResultado() {
 
+    while (Pilha.size() !== 0) {
+        if (Pilha.peek() === Ring) {
+            TRing++;
+        } else if (Pilha.peek() === Eye) {
+            TEye++;
+        }
+        Pilha.pop();
+    }
+    
+    console.log(Pilha.size());
 
-
+    string = "";
+    if (TRing >= 6) {
+        string = '<h2>Parabéns</h2>';
+    } else if (TRing <= 5) {
+string = '<h2>Parabéadasdasdns</h2>';
+    }
+    
+    console.log(string);
+    return string;
 }
