@@ -107,7 +107,7 @@ function SortearResultado() {
 
     string = "";
     if (TRing >= 6) {
-        string = '<h2></h2><img style="max-width:30%; margin:0 auto;" src="'+Ring+'" alt="" />';
+        string = '<h2>Você recebeu a honra de participar da festa dos Hobbits no Condado.</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/uacUXA57VYE?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     } else if (TRing <= 5) {
         string = '<h2></h2><img src="'+Eye+'" alt="" />';
     }
