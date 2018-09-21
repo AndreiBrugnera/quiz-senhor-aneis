@@ -21,6 +21,7 @@ var TEye = 0;
 //ABRE O PAINEL DE INSTRUÇ~EOS
 function Instrucoes() {
     document.getElementById("panel").style.display = "block";
+    document.getElementById("close").style.display = "none";
 }
 
 function ShowBox() {
