@@ -31,6 +31,10 @@ function ShowBox() {
     ChamaPergunta();
 }
 
+//function Recomeca(){
+//    ChamaPergunta();
+//}
+
 function ChamaPergunta() {
     new Pergunta();
 
@@ -52,23 +56,18 @@ function ChamaPergunta() {
 
     } else if (FilaPerguntas.size() === 0) {
         var btnStart = document.getElementById('inicio');
-        btnStart.innerHTML = 'Ver resultado';
+        btnStart.innerHTML = 'Recomeçar';
         btnStart.setAttribute("onClick", "javascript: SortearResultado();");
 
         var ContentResult = document.getElementById('perguntas');
         ContentResult.innerHTML = SortearResultado();
-        
-        var resultado = document.createElement('div');
-                resultado.innerHTML = SortearResultado();
 
-        btnStart.innerHTML = 'Recomeçar';
-//        btnStart.setAttribute("onClick", "javascript: ChamaPergunta();");
 
 
     } else {
         alert("Você descobriu um bug no sistema. Favor comunique os alunos Andrei e Matheus e conte o que você fez!");
     }
-
+    
 }
 
 function CheckResposta() {
@@ -102,16 +101,16 @@ function SortearResultado() {
         }
         Pilha.pop();
     }
-    
+
     console.log(Pilha.size());
 
     string = "";
     if (TRing >= 6) {
-        string = '<h2>Parabéns</h2>';
+        string = '<h2></h2><img style="max-width:30%; margin:0 auto;" src="'+Ring+'" alt="" />';
     } else if (TRing <= 5) {
-string = '<h2>Parabéadasdasdns</h2>';
+        string = '<h2></h2><img src="'+Eye+'" alt="" />';
     }
-    
+
     console.log(string);
     return string;
 }
